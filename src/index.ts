@@ -17,21 +17,22 @@ function crearArbolCarpetasConArchivos(outputPath: string, estructuraCarpetas: R
   }
 }
 
-const outputPath = './output'; // Ruta de la carpeta de salida
+const outputPath = './output'; 
 const estructuraCarpetas = {
-  Carpeta1: {
+  repository: {
     Subcarpeta1: {
       'archivo1.txt': 'Contenido del archivo 1',
       'archivo2.txt': 'Contenido del archivo 2',
     },
     Subcarpeta2: {},
   },
-  Carpeta2: {
-    Subcarpeta3: {
-      'archivo3.txt': 'Contenido del archivo 3',
-    },
+  services: {},
+  databases: {},
+  framewors: {
+    example: {
+      'example.ts': 'console.log()'
+    }
   },
-  Carpeta3: {},
   'archivo4.txt': 'Contenido del archivo 4',
 };
 
