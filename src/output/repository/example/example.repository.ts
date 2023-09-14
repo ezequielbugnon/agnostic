@@ -1,7 +1,7 @@
 
       import Database from '../interface.repository';
       
-      class UserRepository {
+      class Repository {
         constructor(private db: Database) {}
       
         async getAllUsers(): Promise<any[]> {
@@ -17,4 +17,4 @@
         }
       }
       
-      export default UserRepository;
+      export default Repository;

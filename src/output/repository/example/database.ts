@@ -1,4 +1,5 @@
-import Database from '../interface.repository';
+
+      import Database from '../interface.repository';
 
       const database: Database = {
         connect() {

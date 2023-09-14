@@ -30,7 +30,7 @@ const estructuraCarpetas = {
       "example.repository.ts": `
       import Database from '../interface.repository';
       
-      class UserRepository {
+      class Repository {
         constructor(private db: Database) {}
       
         async getAllUsers(): Promise<any[]> {
@@ -46,7 +46,7 @@ const estructuraCarpetas = {
         }
       }
       
-      export default UserRepository;`,
+      export default Repository;`,
       "database.ts": `
       import Database from '../interface.repository';
 
@@ -71,8 +71,67 @@ const estructuraCarpetas = {
     
     export default Database;`,
   },
-  services: {},
-  databases: {},
+  services: {
+    example:{
+      'example.service.ts': `
+      import Repository from "../repository/example/example.repository";
+
+      class Service {
+        constructor(private readonly repository: Repository) {}
+      
+        async getSomething(): Promise<any[]> {
+          try {
+           return []
+          } catch (error) {
+            throw error;
+          }
+        }
+      }
+      
+      export default Service;
+      ` 
+    }
+  },
+  controllers:{
+    'example.controllers.ts': `// Define una interfaz genérica para el controlador
+    interface GenericController<ReqType, ResType> {
+      handleRequest(req: ReqType, res: ResType): void;
+    }
+    
+    // Define los tipos de solicitud y respuesta para Express
+    import { Request, Response } from 'express';
+    
+    // Implementa un controlador específico para Express
+    class ExpressController implements GenericController<Request, Response> {
+      handleRequest(req: Request, res: Response) {
+        // Lógica específica de Express
+        res.send('Hello from Express!');
+      }
+    }
+    
+    // Define los tipos de solicitud y respuesta para Koa
+    import { Context } from 'koa';
+    
+    // Implementa un controlador específico para Koa
+    class KoaController implements GenericController<Context, void> {
+      async handleRequest(ctx: Context) {
+        // Lógica específica de Koa
+        ctx.body = 'Hello from Koa!';
+      }
+    }
+    
+    // Define los tipos de solicitud y respuesta para Fastify
+    import { FastifyRequest, FastifyReply } from 'fastify';
+    
+    // Implementa un controlador específico para Fastify
+    class FastifyController implements GenericController<FastifyRequest, FastifyReply> {
+      async handleRequest(req: FastifyRequest, res: FastifyReply) {
+        // Lógica específica de Fastify
+        res.send('Hello from Fastify!');
+      }
+    }
+    `
+  },
   framewors: {
     example: {
       "example.ts": "console.log()",
