@@ -1,4 +1,11 @@
-import * as fs from "fs";
+import * as fs from 'fs';
+import * as path from 'path';
+
+const argumentos = process.argv.slice(2); 
+console.log('Argumentos:', argumentos);
+
+const outputPath = path.resolve(argumentos[0]);
+
 
 function crearArbolCarpetasConArchivos(
   outputPath: string,
@@ -23,7 +30,6 @@ function crearArbolCarpetasConArchivos(
   }
 }
 
-const outputPath = "./src/output";
 const estructuraCarpetas = {
   repository: {
     example: {
